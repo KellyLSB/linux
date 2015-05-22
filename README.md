@@ -11,7 +11,7 @@ At the moment there is no Makefile or other build script. You will need to prepa
 
     $ git submodule update --init --checkout
     $ docker build -t linux-novena .
-    $ docker run -it linux-novena | tar -xf -
+    $ docker run -i linux-novena | tar -xf -
 
 In theory it should place `uImage` and `imx6q-novena.dtb` into the current path.
 

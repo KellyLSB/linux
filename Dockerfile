@@ -18,10 +18,6 @@ ADD /novena-src/arch/arm/configs/novena_defconfig \
   /build/arch/arm/configs/novena_defconfig
 ADD /novena-src/arch/arm/boot/dts/imx6q-novena.dts \
   /build/arch/arm/boot/dts/imx6q-novena.dts
-#ADD /meta-kosagi/recipes-kernel/linux/linux-novena/defconfig \
-#  /build/arch/arm/configs/novena_defconfig
-#ADD /meta-kosagi/recipes-kernel/linux/linux-novena/imx6q-novena.dts \
-#  /build/arch/arm/boot/dts/imx6q-novena.dts
 
 RUN make novena_defconfig
 
