@@ -5,3 +5,7 @@
 	path = meta-kosagi
 	url = git://github.com/sutajiokousagi/meta-kosagi.git
 	branch = novena
+[submodule "linux-novena"]
+	path = novena-src
+	url = https://github.com/xobs/novena-linux.git
+	branch = origin/v3.19-novena-r1

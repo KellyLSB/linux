@@ -1,6 +1,8 @@
 FROM debian-jessie-armhf
 MAINTAINER Kelly Lauren-Summer Becker-Neuding <kbecker@kellybecker.me>
 
+#RUN apt-get install u-boot-tools
+
 ENV DEB_HOST_ARCH armhf
 ENV CONCURRENCY_LEVEL 2
 ENV EXTRAVERSION -kbeckerneuding-20150521
@@ -25,10 +27,18 @@ RUN make-kpkg --arch=$ARCH --initrd \
   --append-to-version=$EXTRAVERSION \
   kernel_image kernel_headers
 
-RUN make uImage
-RUN make imx6q-novena.dtb
+# @TODO: This likely will need moved
+RUN apt-get install u-boot-tools
 
-RUN cp arch/arm/boot/uImage uImage
-RUN cp arch/arm/boot/dts/imx6q-novena.dtb imx6q-novena.dtb
+RUN make UIMAGE_LOADADDR=$UIMAGE_LOADADDR uImage
+RUN make UIMAGE_LOADADDR=$UIMAGE_LOADADDR imx6q-novena.dtb
 
-ENTRYPOINT tar -cf - uImage imx6q-novena.dtb
+RUN mkdir /built
+
+RUN cp arch/arm/boot/uImage /built/uImage
+RUN cp arch/arm/boot/dts/imx6q-novena.dtb /built/imx6q-novena.dtb
+RUN mv /*.deb /built/
+
+WORKDIR /built
+
+ENTRYPOINT tar -cf - *
