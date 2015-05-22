@@ -1,0 +1,7 @@
+[submodule "linux-stable"]
+	path = stable-src
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+[submodule "meta-kosagi"]
+	path = meta-kosagi
+	url = git://github.com/sutajiokousagi/meta-kosagi.git
+	branch = novena
